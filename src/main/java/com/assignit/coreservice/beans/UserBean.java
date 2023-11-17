@@ -14,5 +14,14 @@ public class UserBean implements Serializable {
     private String name;
 
     @Expose
-    private Long points;
+    private String roleName;
+
+    @Expose
+    private String phone;
+
+    @Expose
+    private String email;
+
+    @Expose
+    private String status;
 }

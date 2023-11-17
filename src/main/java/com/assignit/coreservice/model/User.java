@@ -19,13 +19,23 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "UT_ID")
+    @Column(name = "AUT_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "UT_NAME")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ART_ID", referencedColumnName = "ART_ID", nullable = false)
+    private Role role;
+
+    @Column(name = "AUT_NAME")
     private String name;
 
-    @Column(name = "UT_POINT")
-    private Long points;
+    @Column(name = "AUT_PHONE")
+    private String phone;
+
+    @Column(name = "AUT_EMAIL")
+    private String email;
+
+    @Column(name = "AUT_STATUS")
+    private String status;
 }
