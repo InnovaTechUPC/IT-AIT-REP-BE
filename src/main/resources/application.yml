@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ASSINGIT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: admin123
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+
+# swagger-ui custom path
+springdoc:
+  swagger-ui.path: '/swagger-ui.html'
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    operations-sorter: none
