@@ -5,23 +5,30 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Getter
 @Setter
-public class UserBean implements Serializable {
+public class ProjectBean implements Serializable {
+
+    @Expose
+    private Long id;
 
     @Expose
     private String name;
 
     @Expose
-    private String roleName;
+    private String description;
 
     @Expose
-    private String phone;
-
-    @Expose
-    private String email;
+    private Date date;
 
     @Expose
     private String status;
+
+    @Expose
+    private String progress;
+
+    @Expose
+    private Long totalMembers;
 }

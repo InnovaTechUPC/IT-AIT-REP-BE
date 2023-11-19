@@ -1,7 +1,7 @@
 package com.assignit.coreservice.controller;
 
-import com.assignit.coreservice.beans.UserBean;
-import com.assignit.coreservice.service.UserService;
+import com.assignit.coreservice.beans.RoleBean;
+import com.assignit.coreservice.service.RoleService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
@@ -13,27 +13,17 @@ import org.springframework.web.bind.annotation.*;
 @Log4j2
 @Api
 @RestController
-@RequestMapping("/service/user")
-@Tag(name = "UserController", description = "User EndPoint")
-public class UserController {
+@RequestMapping("/service/role")
+@Tag(name = "RoleController", description = "Role EndPoint")
+public class RoleController {
 
     @Autowired
-    private UserService userService;
+    private RoleService roleService;
 
     @GetMapping("/all")
     public ResponseEntity<?> findAll() {
         try {
-            return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-        } catch (Exception e) {
-            log.error("Error: ", e);
-            return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping("/project/{id}")
-    public ResponseEntity<?> findUsersByIdProject(@PathVariable("id") Long projectId) {
-        try {
-            return new ResponseEntity<>(userService.getUsersByIdProject(projectId), HttpStatus.OK);
+            return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error: ", e);
             return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -41,9 +31,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable("id") Long userId) {
+    public ResponseEntity<?> findById(@PathVariable("id") Long roleId) {
         try {
-            return new ResponseEntity<>(userService.getById(userId), HttpStatus.OK);
+            return new ResponseEntity<>(roleService.getById(roleId), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error: ", e);
             return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -51,9 +41,9 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createUser(@RequestBody UserBean userBean) {
+    public ResponseEntity<?> createRole(@RequestBody RoleBean roleBean) {
         try {
-            userService.createUser(userBean);
+            roleService.createRole(roleBean);
             return new ResponseEntity<>("created", HttpStatus.OK);
         } catch (Exception e) {
             log.error(e);
@@ -62,9 +52,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable("id") Long userId, @RequestBody UserBean userBean) {
+    public ResponseEntity<?> updateRole(@PathVariable("id") Long roleId, @RequestBody RoleBean roleBean) {
         try {
-            userService.updateUser(userId, userBean);
+            roleService.updateRole(roleId, roleBean);
             return new ResponseEntity<>("updated", HttpStatus.OK);
         } catch (Exception e) {
             log.error(e);
@@ -73,9 +63,9 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long userId) {
+    public ResponseEntity<?> deleteRole(@PathVariable("id") Long roleId) {
         try {
-            userService.deleteUser(userId);
+            roleService.deleteRole(roleId);
             return new ResponseEntity<>("deleted", HttpStatus.OK);
         } catch (Exception e) {
             log.error(e);

@@ -8,20 +8,14 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class UserBean implements Serializable {
+public class RoleBean implements Serializable {
+
+    @Expose
+    private Long id;
 
     @Expose
     private String name;
 
     @Expose
-    private String roleName;
-
-    @Expose
-    private String phone;
-
-    @Expose
-    private String email;
-
-    @Expose
-    private String status;
+    private String code;
 }

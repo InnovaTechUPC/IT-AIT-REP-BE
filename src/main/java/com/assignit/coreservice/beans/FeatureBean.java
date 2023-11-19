@@ -8,20 +8,20 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class UserBean implements Serializable {
+public class FeatureBean implements Serializable {
 
     @Expose
-    private String name;
+    private Long id;
 
     @Expose
-    private String roleName;
+    private String title;
 
     @Expose
-    private String phone;
+    private String content;
 
     @Expose
-    private String email;
+    private String action;
 
     @Expose
-    private String status;
+    private String icon;
 }

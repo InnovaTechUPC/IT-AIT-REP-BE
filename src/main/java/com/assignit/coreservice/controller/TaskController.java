@@ -1,7 +1,7 @@
 package com.assignit.coreservice.controller;
 
-import com.assignit.coreservice.beans.UserBean;
-import com.assignit.coreservice.service.UserService;
+import com.assignit.coreservice.beans.TaskBean;
+import com.assignit.coreservice.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
@@ -13,27 +13,17 @@ import org.springframework.web.bind.annotation.*;
 @Log4j2
 @Api
 @RestController
-@RequestMapping("/service/user")
-@Tag(name = "UserController", description = "User EndPoint")
-public class UserController {
+@RequestMapping("/service/task")
+@Tag(name = "TaskController", description = "Task EndPoint")
+public class TaskController {
 
     @Autowired
-    private UserService userService;
+    private TaskService taskService;
 
     @GetMapping("/all")
     public ResponseEntity<?> findAll() {
         try {
-            return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-        } catch (Exception e) {
-            log.error("Error: ", e);
-            return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping("/project/{id}")
-    public ResponseEntity<?> findUsersByIdProject(@PathVariable("id") Long projectId) {
-        try {
-            return new ResponseEntity<>(userService.getUsersByIdProject(projectId), HttpStatus.OK);
+            return new ResponseEntity<>(taskService.getAllTasks(), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error: ", e);
             return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -41,9 +31,19 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable("id") Long userId) {
+    public ResponseEntity<?> findById(@PathVariable("id") Long taskId) {
         try {
-            return new ResponseEntity<>(userService.getById(userId), HttpStatus.OK);
+            return new ResponseEntity<>(taskService.getById(taskId), HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Error: ", e);
+            return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/project/{id}")
+    public ResponseEntity<?> findTasksByIdProject(@PathVariable("id") Long idProject) {
+        try {
+            return new ResponseEntity<>(taskService.getTasksByIdProject(idProject), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error: ", e);
             return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -51,9 +51,9 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createUser(@RequestBody UserBean userBean) {
+    public ResponseEntity<?> createTask(@RequestBody TaskBean taskBean) {
         try {
-            userService.createUser(userBean);
+            taskService.createTask(taskBean);
             return new ResponseEntity<>("created", HttpStatus.OK);
         } catch (Exception e) {
             log.error(e);
@@ -62,9 +62,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable("id") Long userId, @RequestBody UserBean userBean) {
+    public ResponseEntity<?> updateTask(@PathVariable("id") Long taskId, @RequestBody TaskBean taskBean) {
         try {
-            userService.updateUser(userId, userBean);
+            taskService.updateTask(taskId, taskBean);
             return new ResponseEntity<>("updated", HttpStatus.OK);
         } catch (Exception e) {
             log.error(e);
@@ -73,9 +73,9 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long userId) {
+    public ResponseEntity<?> deleteTask(@PathVariable("id") Long taskId) {
         try {
-            userService.deleteUser(userId);
+            taskService.deleteTask(taskId);
             return new ResponseEntity<>("deleted", HttpStatus.OK);
         } catch (Exception e) {
             log.error(e);
