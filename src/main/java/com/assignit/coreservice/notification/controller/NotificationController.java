@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @Log4j2
 @Api
 @RestController
-@RequestMapping("/service/role")
-@Tag(name = "RoleController", description = "Role EndPoint")
+@RequestMapping("/service/notification")
+@Tag(name = "NotificationController", description = "Notification EndPoint")
 public class NotificationController {
     @Autowired
     private NotificationService notificationService;

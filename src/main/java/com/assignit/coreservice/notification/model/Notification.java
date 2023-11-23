@@ -15,7 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@Table(name = "AIT_ROLE_TABLE")
+@Table(name = "AIT_NOTIFICATION_TABLE")
 public class Notification implements Serializable {
     @Id
     @Column(name = "ANT_ID")

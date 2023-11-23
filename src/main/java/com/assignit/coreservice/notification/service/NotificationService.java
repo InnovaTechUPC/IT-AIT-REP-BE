@@ -5,6 +5,7 @@ import com.assignit.coreservice.notification.beans.NotificationBean;
 import com.assignit.coreservice.notification.dao.NotificationDAO;
 import com.assignit.coreservice.shared.base.BaseService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,15 @@ public class NotificationService extends BaseService<Notification, NotificationB
 
     @Autowired
     private NotificationDAO notificationRepository;
+
+    @Override
+    public NotificationBean toBean(Notification model, Class<NotificationBean> modelClass) {
+        NotificationBean bean = new NotificationBean();
+        BeanUtils.copyProperties(model, bean);
+        bean.setUserId(model.getUser().getId());
+        bean.setProjectId(model.getProject().getId());
+        return bean;
+    }
 
     public List<NotificationBean> getAllNotifications() {
         List<NotificationBean> list = new ArrayList<>();

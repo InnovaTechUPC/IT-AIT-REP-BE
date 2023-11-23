@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-@Table(name = "AIT_AI_CHAT_TABLE")
+@Table(name = "AIT_AI_TABLE")
 public class Ai implements Serializable {
     @Id
     @Column(name = "AAIT_ID")

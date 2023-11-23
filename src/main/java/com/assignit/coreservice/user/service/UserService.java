@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class UserService extends BaseService<User, UserBean> {
         return bean;
     }
 
+    @Transactional
     public List<UserBean> getAllUsers() {
         List<UserBean> list = new ArrayList<>();
         List<User> users =  userRepository.findAll();
