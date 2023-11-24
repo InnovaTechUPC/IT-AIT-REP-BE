@@ -1,0 +1,13 @@
+*.iml
+*.iws
+
+.idea/
+.sonar/
+.sonarlint/
+
+.env
+
+Dockerfile
+
+docker-compose-be.yml
+README.md
