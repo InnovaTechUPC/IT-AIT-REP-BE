@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MVCConfig implements WebMvcConfigurer {
 
-    @Value("${server.web.allowed-origins:http://localhost:4200}")
+    @Value("${server.web.allowed-origins}")
     private String[] allowedOrigins;
 
     @Override
