@@ -5,6 +5,8 @@
 .sonar/
 .sonarlint/
 
+src/
+
 .env
 
 Dockerfile
