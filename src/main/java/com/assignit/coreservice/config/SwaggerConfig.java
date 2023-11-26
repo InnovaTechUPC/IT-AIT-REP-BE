@@ -5,10 +5,12 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Configuration
 public class SwaggerConfig {
 
     @Value("${springdoc.server.url:http://localhost:8080}")
@@ -17,10 +19,16 @@ public class SwaggerConfig {
     private final List<Server> serverList = new ArrayList<>();
 
     @Bean
+    public OpenAPI openAPI() {
+        return new OpenAPI();
+    }
+
+    @Bean
     public OpenAPI customizeOpenAPI(OpenAPI openApi) {
         openApi.info(new Info()
-                .title("API Docs")
-                .version("1.0"));
+                .title("Assign IT API")
+                .version("0.0.2")
+                .description("Assign IT API documentation"));
 
         for (String server: serverUrl) {
             serverList.add(new Server()
