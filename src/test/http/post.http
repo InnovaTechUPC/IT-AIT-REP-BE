@@ -1,8 +1,5 @@
-POST localhost:3000/auth/login
+POST localhost:5000/ai-api
 Content-Type: application/json
 
-{
-    "email": "te233@gmail.com",
-    "password": "test123"
-}
+{"request": "¿Puedes?"}
 
