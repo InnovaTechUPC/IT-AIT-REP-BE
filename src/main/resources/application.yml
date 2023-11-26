@@ -1,5 +1,12 @@
 server:
   port: 8080
+  web:
+    allowed-origins:  http://localhost:4200/
+
+application:
+  rest:
+    client:
+      ai-service: http://localhost:5000/
 
 spring:
   datasource:
@@ -8,7 +15,7 @@ spring:
     username: root
     password: admin123
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
