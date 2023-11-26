@@ -13,7 +13,7 @@ import java.util.List;
 @Configuration
 public class SwaggerConfig {
 
-    @Value("${springdoc.server.url:http://localhost:8080}")
+    @Value("${springdoc.server.url}")
     private String[] serverUrl;
 
     private final List<Server> serverList = new ArrayList<>();
