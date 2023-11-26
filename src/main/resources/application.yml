@@ -1,14 +1,23 @@
 server:
   port: 8080
+  web:
+    allowed-origins:  http://localhost:4200/, http://localhost:5000/
+
+application:
+  rest:
+    client:
+      ai-service: http://localhost:5000/
 
 spring:
+  profiles:
+    active: dev
   datasource:
     url: jdbc:mysql://localhost:3306/ASSINGIT
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: admin
     password: admin123
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -23,3 +32,13 @@ springdoc:
   swagger-ui:
     enabled: true
     operations-sorter: none
+  server:
+    url: http://localhost:8080
+
+# Hibernate SQL Logging
+logging:
+  level:
+    root: info
+    org.hibernate:
+      sql: DEBUG
+      type: TRACE
