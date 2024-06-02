@@ -16,6 +16,8 @@ public class SwaggerConfig {
     @Value("${springdoc.server.url}")
     private String[] serverUrl;
 
+    @Value("${springdoc.info.version}")
+    private String infoVersion;
     private final List<Server> serverList = new ArrayList<>();
 
     @Bean
@@ -27,7 +29,7 @@ public class SwaggerConfig {
     public OpenAPI customizeOpenAPI(OpenAPI openApi) {
         openApi.info(new Info()
                 .title("Assign IT API")
-                .version("0.0.2")
+                .version(infoVersion)
                 .description("Assign IT API documentation"));
 
         for (String server: serverUrl) {

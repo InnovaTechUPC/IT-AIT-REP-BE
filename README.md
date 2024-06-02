@@ -1,8 +1,8 @@
-# Core-Service v.0.0.2 🧠
+# Core-Service v.0.0.3-SNAPSHOT 🧠
 
 ---
 
-<h2 id="description"> Description 🛠️ </h2>
+<h2 id="description"> Description 🛠️  </h2>
 
 El backend de AssignIt actúa como el motor detrás de la interfaz web, permitiendo a los usuarios conectarse directamente a la potencia de la inteligencia artificial (IA) desde sus navegadores.
 Ademas, esta encargado de gestionar y procesar las consultas de los usuarios de manera eficiente.

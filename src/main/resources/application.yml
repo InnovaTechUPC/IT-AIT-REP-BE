@@ -32,6 +32,8 @@ springdoc:
   swagger-ui:
     enabled: true
     operations-sorter: none
+  info:
+    version: 0.0.3-SNAPSHOT
   server:
     url: http://localhost:8080
 
